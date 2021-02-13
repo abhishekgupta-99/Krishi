@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<MainListItem> list;
     private RecyclerView recyclerView;
     private MainAdapter adapter;
+     MediaPlayer mp;
+
+    //final MediaPlayer mp= MediaPlayer.create(this, R.raw.home);
 
 //    MediaPlayer mp = null;
 //    String kVoiceRssServer = "http://api.voicerss.org";
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+         mp= MediaPlayer.create(this, R.raw.home);
 
 
 
@@ -73,14 +78,29 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
        // initializeMediaPlayer();
+        try{
+            //you can change the path, here path is external directory(e.g. sdcard) /Music/maine.mp3
+            //mp.setDataSource(R.raw.home);
+
+           // mp.prepare();
+            mp.start();
+        }catch(Exception e){e.printStackTrace();}
+
         TextToSpeech ts= new TextToSpeech();
-        ts.initializeMediaPlayer(" खेती की उन्नत विधियां के लिए पहला कार्ड चुने | प्रमुख समस्याएं एवं निवारण के लिए दूसरा कार्ड चुने | सरकार की योजनाएं के लिए तीसरा कार्ड चुने | कृषि चैटबॉट के लिए चौथा कार्ड चुने");
+       // ts.initializeMediaPlayer(" खेती की उन्नत विधियां के लिए पहला कार्ड चुने | प्रमुख समस्याएं एवं निवारण के लिए दूसरा कार्ड चुने | सरकार की योजनाएं के लिए तीसरा कार्ड चुने | कृषि चैटबॉट के लिए चौथा कार्ड चुने");
 
         Log.v("version", Build.VERSION.SDK_INT + "");
 
         findViewById(R.id.progress).setVisibility(View.GONE);
+
+
     }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mp.release();
+    }
 }

@@ -47,14 +47,14 @@ public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.viewHolder
         holder.itemView.setBackgroundColor(Color.parseColor(colors[position]));
 
 
-//        holder.card.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent browser =new Intent(context, WebActivity.class);
-//                browser.putExtra("link",links[position]);
-//                context.startActivity(browser);
-//            }
-//        });
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browser =new Intent(context, WebActivity.class);
+                browser.putExtra("link",links[position]);
+                context.startActivity(browser);
+            }
+        });
     }
 
     @Override

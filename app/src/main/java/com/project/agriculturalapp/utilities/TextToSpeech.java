@@ -28,7 +28,7 @@ public class TextToSpeech {
             player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         }
         try {
-            player.prepare();
+            //player.prepare();
             player.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {

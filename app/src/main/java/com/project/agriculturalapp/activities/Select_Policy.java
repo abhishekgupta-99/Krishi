@@ -1,5 +1,6 @@
 package com.project.agriculturalapp.activities;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +27,7 @@ public class Select_Policy extends AppCompatActivity {
     private String[] allcolors;
     String tts="";
     String[] hindi_color= {"नीला","पीला","नारंगी","लाल","सफेद","काला","गुलाबी","हरा","बैंगनी"};
+     MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class Select_Policy extends AppCompatActivity {
                 finish();
             }
         });
+
+        mp= MediaPlayer.create(this, R.raw.color);
 
         links=getResources().getStringArray(R.array.policies_link);
         allcolors=getResources().getStringArray(R.array.Colors);
@@ -62,10 +66,25 @@ public class Select_Policy extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        TextToSpeech ts= new TextToSpeech();
-        ts.initializeMediaPlayer(tts);
+
+        try{
+            //you can change the path, here path is external directory(e.g. sdcard) /Music/maine.mp3
+            //mp.setDataSource(R.raw.home);
+
+            // mp.prepare();
+            mp.start();
+        }catch(Exception e){e.printStackTrace();}
+
+        //TextToSpeech ts= new TextToSpeech();
+        //ts.initializeMediaPlayer(tts);
 
 
         findViewById(R.id.progress).setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mp.release();
     }
 }

@@ -1,6 +1,7 @@
 package com.project.agriculturalapp.activities;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -44,6 +45,8 @@ public class CropProductionActivity extends AppCompatActivity {
             }
         });
 
+        final MediaPlayer mp= MediaPlayer.create(this, R.raw.kheti);
+
         list=new ArrayList<>();
 
         Intent[] links=getIntents();
@@ -65,6 +68,14 @@ public class CropProductionActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
+
+        try{
+            //you can change the path, here path is external directory(e.g. sdcard) /Music/maine.mp3
+            //mp.setDataSource(R.raw.home);
+
+            // mp.prepare();
+            mp.start();
+        }catch(Exception e){e.printStackTrace();}
 
         findViewById(R.id.progress).setVisibility(View.GONE);
     }

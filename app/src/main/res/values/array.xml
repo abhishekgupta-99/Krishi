@@ -3,15 +3,15 @@
 <resources>
 
     <string-array name="Colors">
-        <item>#00AFB5</item>
-        <item>#FCFF6C</item>
-        <item>#FF7700</item>
-        <item>#A30000</item>
-        <item>#ffffff</item>
+<!--        <item>#00AFB5</item>-->
+<!--        <item>#FCFF6C</item>-->
+<!--        <item>#FF7700</item>-->
+<!--        <item>#A30000</item>-->
+        <item>#2196F3</item>
         <item>#1C2321</item>
         <item>#DA4167</item>
-        <item>#476A6F</item>
-        <item>#083D77</item>
+        <item>#FF5722</item>
+<!--        <item>#083D77</item>-->
     </string-array>
 
 
